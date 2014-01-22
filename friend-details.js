@@ -1,14 +1,20 @@
 var getUserDetails = function(uid){
-getFriends(uid, function(friends){
-  for(var friend in friends.friends){
-getUpdates(friend,
-function(updates){
-  if(updates.length > 0){
-  getUser(friend, function(details){
-    printUser(details, updates);
-)
-  })
-}
+  getFriends(uid, 
+    function(friends){
+      for(var friend in friends.friends){
+        getUpdates(friend,
+          function(updates){
+            if(updates.length > 0){
+              getUser(friend, function(details){
+                printUser(details, updates);
+              })
+            }
+          }
+        )
+      }
+    }
+  )
+};
 
 //test with user 0
 getUserDetails(0);
